@@ -28,15 +28,10 @@ app.use(helmet())
 app.use(xss())
 app.use(cors())
 app.use(mongoSanitize())
-app.use(morgan('dev'))
 app.use(express.json())
 app.use(cookieParser(process.env.JWT_SECRET))
 app.use(express.static('./public'))
 app.use(fileUpload())
-
-app.get('/', (req, res) => {
-  res.send('main route')
-})
 
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/users', userRouter)
